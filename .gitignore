@@ -37,3 +37,4 @@ out/
 .vscode/
 /docker/db-volume/
 /docker/keycloak-volume/
+/docker/
