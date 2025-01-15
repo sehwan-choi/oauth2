@@ -713,6 +713,226 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Authorization Grant",
+					"item": [
+						{
+							"name": "code 요청",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/realms/oauth2/protocol/openid-connect/auth?response_type=code&client_id=oauth2-client-app&scope=openid profile email&redirect_uri=http://localhost:8081",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"realms",
+										"oauth2",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "oauth2-client-app"
+										},
+										{
+											"key": "scope",
+											"value": "openid profile email"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8081"
+										},
+										{
+											"key": "state",
+											"value": "1234",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "token 요청",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "oauth2-client-app",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "UAVYZDOh5rdpQxuK4EQ9sQaZh3K9mlVi",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8081",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "a4bdd445-f387-43ac-a824-32a023bd7572.c8e4d6d8-3a3d-4dc5-abb5-db95eca65d2c.a86f1300-5de6-4970-b889-a72430531df5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/realms/oauth2/protocol/openid-connect/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"realms",
+										"oauth2",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "client Credentials Grant(Server to Server)",
+					"item": [
+						{
+							"name": "token 요청",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "oauth2-client-app",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "UAVYZDOh5rdpQxuK4EQ9sQaZh3K9mlVi",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "openid profile email",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/realms/oauth2/protocol/openid-connect/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"realms",
+										"oauth2",
+										"protocol",
+										"openid-connect",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "http://localhost:8081",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "refresh Token Grant",
+					"item": [
+						{
+							"name": "token 요청",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "refresh_token",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "oauth2-client-app",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "UAVYZDOh5rdpQxuK4EQ9sQaZh3K9mlVi",
+											"type": "text"
+										},
+										{
+											"key": "refresh_token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4NWNmMTZkNS04OWY1LTQxY2EtOWQ4ZS1hMjZiODFiMGVmNjgifQ.eyJleHAiOjE3MzY5NTU3MzcsImlhdCI6MTczNjk1MzkzNywianRpIjoiNTNmMjM2MzAtNWM5ZC00YTZmLTg0ZDEtOTkwZDUyMzlkNDkxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9vYXV0aDIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL29hdXRoMiIsInN1YiI6ImI3YmY3OTk4LTVjOTgtNDg2Yi05N2JiLWI4MzAzNzQwZGRiNyIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJvYXV0aDItY2xpZW50LWFwcCIsInNlc3Npb25fc3RhdGUiOiJlNDJhZTVkZC00ZTQxLTQ4YjAtYWI3OS1lMTI4OGNhZjhmMjgiLCJzY29wZSI6Im9wZW5pZCBwaG9uZSBlbWFpbCBwcm9maWxlIGFkZHJlc3MiLCJzaWQiOiJlNDJhZTVkZC00ZTQxLTQ4YjAtYWI3OS1lMTI4OGNhZjhmMjgifQ.5sZdytF92M0VpVdIqcMHMkZ6PuxE6ZCGOxhrWDivbIE",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/realms/oauth2/protocol/openid-connect/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"realms",
+										"oauth2",
+										"protocol",
+										"openid-connect",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "http://localhost:8081",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
